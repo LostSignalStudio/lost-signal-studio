@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <!-- МЕТА-ТЕГ ПОДТВЕРЖДЕНИЯ GOOGLE (ваш код) -->
+    <!-- МЕТА-ТЕГ ПОДТВЕРЖДЕНИЯ GOOGLE -->
     <meta name="google-site-verification" content="google82b4ffeb7e219b5">
     <title>Lost Signal Studio — Кино в Minecraft</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -14,20 +15,24 @@
             box-sizing: border-box;
         }
 
+        /* ГЛАВНЫЙ ФОН — полноэкранный фиолетовый градиент, без чёрных углов */
         body {
-            background-color: #020408;
+            background: radial-gradient(ellipse at 30% 40%, #1f1535 0%, #0a0518 100%);
             font-family: 'Inter', sans-serif;
             color: #eef2ff;
             line-height: 1.4;
+            min-height: 100vh;
         }
 
+        /* Сайт-обертка — теперь на всю ширину без ограничения 1440px */
         .site {
-            max-width: 1440px;
+            max-width: 100%;
             margin: 0 auto;
-            background: radial-gradient(ellipse at 20% 30%, #0a0b1a, #010005);
+            background: radial-gradient(ellipse at 20% 30%, #251a42 0%, #0c0618 100%);
+            box-shadow: 0 0 120px rgba(139, 92, 246, 0.2);
         }
 
-        /* Hero секция — первое что видит пользователь, стиль Lost 1 */
+        /* Hero секция */
         .hero {
             position: relative;
             width: 100%;
@@ -47,7 +52,7 @@
             height: 100%;
             object-fit: cover;
             z-index: 0;
-            filter: brightness(0.7) contrast(1.15);
+            filter: brightness(0.65) contrast(1.1) hue-rotate(5deg);
         }
 
         .hero-overlay {
@@ -56,7 +61,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(125deg, rgba(0,0,0,0.8) 0%, rgba(20,10,45,0.65) 50%, rgba(5,0,15,0.85) 100%);
+            background: linear-gradient(125deg, rgba(20, 10, 50, 0.85) 0%, rgba(45, 25, 80, 0.6) 50%, rgba(10, 0, 20, 0.9) 100%);
             z-index: 1;
         }
 
@@ -64,7 +69,8 @@
             position: relative;
             z-index: 2;
             text-align: center;
-            max-width: 950px;
+            max-width: 1100px;
+            width: 90%;
             padding: 2rem;
             animation: fadeUp 0.9s ease-out;
         }
@@ -74,14 +80,14 @@
             letter-spacing: 5px;
             text-transform: uppercase;
             font-weight: 500;
-            color: #c4b5fd;
-            background: rgba(0,0,0,0.55);
+            color: #d8b4fe;
+            background: rgba(0,0,0,0.5);
             display: inline-block;
             padding: 0.4rem 1.5rem;
             border-radius: 40px;
             backdrop-filter: blur(4px);
             margin-bottom: 1.5rem;
-            border-left: 2px solid #8b5cf6;
+            border-left: 2px solid #a855f7;
         }
 
         .hero-title {
@@ -89,23 +95,19 @@
             font-weight: 800;
             line-height: 1.1;
             margin-bottom: 1.2rem;
-            background: linear-gradient(135deg, #FFFFFF, #c084fc);
+            background: linear-gradient(135deg, #FFFFFF, #d8b4fe, #a855f7);
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
             text-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
 
-        .hero-title.no-quotes {
-            font-style: normal;
-        }
-
         .hero-sub {
             font-size: 1.1rem;
-            color: #e2d8ff;
-            max-width: 650px;
+            color: #e9d5ff;
+            max-width: 700px;
             margin: 0 auto 1.8rem auto;
-            background: rgba(0,0,0,0.4);
+            background: rgba(0,0,0,0.45);
             padding: 0.7rem 1.5rem;
             border-radius: 60px;
             backdrop-filter: blur(5px);
@@ -114,14 +116,14 @@
         .hero-quote {
             font-style: italic;
             font-weight: 300;
-            border-left: 3px solid #8b5cf6;
+            border-left: 3px solid #a855f7;
             padding-left: 1.2rem;
             display: inline-block;
             font-size: 1rem;
             margin-bottom: 1.5rem;
+            color: #d8b4fe;
         }
 
-        /* Статусный блок */
         .project-status {
             display: flex;
             justify-content: center;
@@ -129,12 +131,12 @@
             flex-wrap: wrap;
             margin: 1.8rem auto 0.5rem auto;
             padding: 0.8rem 2rem;
-            background: rgba(0, 0, 0, 0.55);
+            background: rgba(25, 15, 50, 0.7);
             backdrop-filter: blur(8px);
             border-radius: 80px;
-            border: 1px solid rgba(139, 92, 246, 0.4);
+            border: 1px solid rgba(139, 92, 246, 0.5);
             width: fit-content;
-            box-shadow: 0 0 20px rgba(139, 92, 246, 0.2);
+            box-shadow: 0 0 25px rgba(139, 92, 246, 0.25);
         }
         .status-item {
             display: flex;
@@ -143,22 +145,22 @@
             font-size: 1.1rem;
             font-weight: 500;
             letter-spacing: 0.3px;
-            color: #e2d8ff;
+            color: #e9d5ff;
         }
         .status-icon {
             font-size: 1.5rem;
-            filter: drop-shadow(0 0 4px #8b5cf6);
+            filter: drop-shadow(0 0 4px #a855f7);
         }
         .status-divider {
             width: 1px;
             height: 28px;
-            background: linear-gradient(to bottom, transparent, #8b5cf6, transparent);
+            background: linear-gradient(to bottom, transparent, #a855f7, transparent);
         }
         @media (max-width: 680px) {
-            .project-status { gap: 1rem; padding: 0.6rem 1.2rem; }
-            .status-item { font-size: 0.85rem; gap: 0.4rem; }
+            .project-status { gap: 0.8rem; padding: 0.6rem 1.2rem; }
+            .status-item { font-size: 0.8rem; gap: 0.4rem; }
             .status-icon { font-size: 1.2rem; }
-            .status-divider { height: 20px; }
+            .status-divider { height: 18px; }
         }
 
         @keyframes fadeUp {
@@ -167,7 +169,7 @@
         }
 
         .container {
-            max-width: 1300px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 3rem 2rem;
         }
@@ -176,31 +178,31 @@
             font-size: 2.2rem;
             font-weight: 700;
             margin-bottom: 0.5rem;
-            background: linear-gradient(120deg, #e9e4ff, #a855f7);
+            background: linear-gradient(120deg, #f0e6ff, #c084fc);
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
         }
 
         .section-sub {
-            color: #a994d6;
+            color: #c4b5fd;
             margin-bottom: 2rem;
-            border-left: 3px solid #8b5cf6;
+            border-left: 3px solid #a855f7;
             padding-left: 1rem;
         }
 
-        /* Блок социальных ссылок */
+        /* Социальные ссылки */
         .social-links {
             display: flex;
             justify-content: center;
             gap: 2rem;
             flex-wrap: wrap;
             margin: 2rem 0 3rem 0;
-            background: rgba(20, 15, 40, 0.7);
+            background: rgba(30, 20, 55, 0.7);
             backdrop-filter: blur(12px);
             padding: 1rem 2rem;
             border-radius: 60px;
-            border: 1px solid rgba(139, 92, 246, 0.3);
+            border: 1px solid rgba(139, 92, 246, 0.4);
         }
         .social-link {
             display: inline-flex;
@@ -211,19 +213,17 @@
             padding: 0.5rem 1.4rem;
             border-radius: 40px;
             text-decoration: none;
-            color: #e9e4ff;
+            color: #f0e6ff;
             font-weight: 500;
             font-size: 0.9rem;
             transition: all 0.25s ease;
             border: 1px solid rgba(139, 92, 246, 0.4);
             min-width: 150px;
-            position: relative;
         }
         .social-link .link-text {
             display: inline-flex;
             align-items: center;
             gap: 0.6rem;
-            transition: opacity 0.2s ease;
         }
         .social-link .social-hover-icon {
             display: none;
@@ -238,7 +238,7 @@
             display: block;
         }
         .social-link:hover {
-            background: #1e1a2f;
+            background: #2a1e4a;
             transform: translateY(-2px);
             border-color: #c084fc;
         }
@@ -272,7 +272,7 @@
         .group-header h3 {
             font-size: 1.8rem;
             font-weight: 600;
-            color: #cdc1ff;
+            color: #e0d4ff;
         }
 
         .group-header span {
@@ -290,9 +290,9 @@
         }
 
         .vacancy-card {
-            background: rgba(15, 10, 30, 0.8);
+            background: rgba(18, 12, 35, 0.85);
             backdrop-filter: blur(8px);
-            border: 1px solid rgba(139, 92, 246, 0.25);
+            border: 1px solid rgba(139, 92, 246, 0.3);
             border-radius: 28px;
             padding: 1.6rem;
             transition: all 0.2s ease;
@@ -301,10 +301,10 @@
         }
 
         .vacancy-card:hover {
-            border-color: #a855f7;
+            border-color: #b77cff;
             transform: translateY(-4px);
-            background: rgba(25, 18, 45, 0.9);
-            box-shadow: 0 15px 30px -10px rgba(139, 92, 246, 0.3);
+            background: rgba(30, 20, 55, 0.95);
+            box-shadow: 0 15px 30px -10px rgba(139, 92, 246, 0.4);
         }
 
         .vacancy-icon {
@@ -316,7 +316,7 @@
             font-size: 1.5rem;
             font-weight: 700;
             margin-bottom: 0.3rem;
-            color: #ddd6fe;
+            color: #e0d4ff;
         }
 
         .vacancy-badge {
@@ -332,7 +332,7 @@
         }
 
         .vacancy-desc {
-            color: #cbc3e6;
+            color: #cfc6f0;
             font-size: 0.9rem;
             line-height: 1.45;
             margin: 0.8rem 0;
@@ -348,11 +348,11 @@
             display: flex;
             align-items: baseline;
             gap: 8px;
-            color: #cbc3e6;
+            color: #cfc6f0;
         }
         .requirement-list li::before {
             content: "▹";
-            color: #a78bfa;
+            color: #c084fc;
             font-size: 0.7rem;
         }
 
@@ -377,9 +377,8 @@
             text-decoration: none;
             transition: 0.2s;
             text-align: center;
-            cursor: pointer;
-            box-shadow: 0 2px 8px rgba(124, 58, 237, 0.3);
             align-self: flex-start;
+            box-shadow: 0 2px 8px rgba(124, 58, 237, 0.4);
         }
 
         .btn-discord:hover {
@@ -393,14 +392,14 @@
             padding: 2rem;
             text-align: center;
             font-size: 0.8rem;
-            color: #8a7bc2;
-            background: rgba(0,0,0,0.5);
+            color: #a78bfa;
+            background: rgba(10, 5, 20, 0.6);
         }
 
         .scan-line {
             width: 100px;
             height: 2px;
-            background: linear-gradient(90deg, transparent, #a855f7, transparent);
+            background: linear-gradient(90deg, transparent, #c084fc, transparent);
             margin: 1rem auto;
         }
 
@@ -414,13 +413,12 @@
 </head>
 <body>
 <div class="site">
-    <!-- Hero -->
     <section class="hero">
         <img class="hero-bg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 1080'%3E%3Cdefs%3E%3ClinearGradient id='a' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23050a14'/%3E%3Cstop offset='45%25' stop-color='%2312102a'/%3E%3Cstop offset='100%25' stop-color='%23000000'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='1920' height='1080' fill='url(%23a)'/%3E%3Ccircle cx='900' cy='550' r='220' fill='%233b2e6e' opacity='0.35' filter='blur(35px)'/%3E%3Cpath d='M400 750 L1520 700 L1480 920 L380 890 Z' fill='%23221c3e' opacity='0.6'/%3E%3C/svg%3E" alt="Lost Signal cinematic visual">
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <div class="hero-tagline">LOST SIGNAL STUDIO</div>
-            <h1 class="hero-title no-quotes">Сигнал не теряется.<br>Кино начинается</h1>
+            <h1 class="hero-title">Сигнал не теряется.<br>Кино начинается</h1>
             <div class="hero-sub">Независимая киностудия в Minecraft. Полноценные фильмы и сериалы с сюжетом, анимацией и монтажом.</div>
             <div class="hero-quote">▸ Прометей: Восстание кода — психологический хоррор. 1 сезон, 6 серий — Лето 2026. 2 сезон — дата и количество серий будут объявлены позднее.</div>
             <div class="project-status">
@@ -434,7 +432,6 @@
     </section>
 
     <div class="container">
-        <!-- Социальные ссылки -->
         <div class="social-links">
             <a href="https://discord.gg/UFprTbgwf" target="_blank" class="social-link discord-link">
                 <span class="link-text"><span class="social-icon">💬</span> Discord сервер</span>
@@ -475,7 +472,7 @@
             <div class="vacancy-card"><div class="vacancy-icon">🤖⚡</div><div class="vacancy-title">Бот-мастер</div><div class="vacancy-badge">Carl-bot, YAGPDB, Ticket Tool</div><div class="vacancy-desc">Настройка ботов, автоматизация, анкеты, выдача ролей, техподдержка сервера.</div><div class="age-note">📍 от 15–16 лет</div><a href="https://discord.gg/UFprTbgwf" target="_blank" class="btn-discord">🎙️ Откликнуться → Discord</a></div>
         </div></div>
 
-        <!-- Управленческие роли (без кнопок) -->
+        <!-- Управленческие роли -->
         <div class="roles-group"><div class="group-header"><h3>👑 Управленческие роли</h3><span>руководство & контроль</span></div>
         <div class="vacancies-grid">
             <div class="vacancy-card"><div class="vacancy-icon">📋✅</div><div class="vacancy-title">Куратор</div><div class="vacancy-badge">руководитель направления</div><div class="vacancy-desc">Распределение задач, проверка отчётов, помощь сотрудникам, передача статусов процессу. Назначается из опытных сотрудников.</div><ul class="requirement-list"><li>Опыт работы в студии или IT-команде</li><li>Ответственность и системность</li></ul></div>
@@ -483,7 +480,6 @@
         </div></div>
     </div>
 
-    <!-- Футер -->
     <div class="footer">
         <div><span style="font-weight: 500; letter-spacing: 1px;">LOST SIGNAL STUDIO © 2026</span></div>
         <div class="scan-line"></div>
@@ -491,3 +487,4 @@
 </div>
 </body>
 </html>
+```

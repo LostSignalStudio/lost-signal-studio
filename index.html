@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -14,23 +15,21 @@
             box-sizing: border-box;
         }
 
-        /* ГЛАВНЫЙ ФОН — теперь полностью фиолетово-черный градиент без черных краев */
+        /* ГЛАВНЫЙ ФОН — полноэкранный фиолетовый градиент, без чёрных углов */
         body {
-            background: radial-gradient(ellipse at 30% 40%, #1a1030 0%, #08040f 100%);
+            background: radial-gradient(ellipse at 30% 40%, #1f1535 0%, #0a0518 100%);
             font-family: 'Inter', sans-serif;
             color: #eef2ff;
             line-height: 1.4;
             min-height: 100vh;
         }
 
-        /* Сайт-обертка с дополнительным свечением */
+        /* Сайт-обертка — теперь на всю ширину без ограничения 1440px */
         .site {
-            max-width: 1440px;
+            max-width: 100%;
             margin: 0 auto;
-            background: radial-gradient(ellipse at 20% 30%, #1f1535 0%, #0a0518 100%);
-            box-shadow: 0 0 80px rgba(139, 92, 246, 0.15);
-            border-left: 1px solid rgba(139, 92, 246, 0.1);
-            border-right: 1px solid rgba(139, 92, 246, 0.1);
+            background: radial-gradient(ellipse at 20% 30%, #251a42 0%, #0c0618 100%);
+            box-shadow: 0 0 120px rgba(139, 92, 246, 0.2);
         }
 
         /* Hero секция */
@@ -70,7 +69,8 @@
             position: relative;
             z-index: 2;
             text-align: center;
-            max-width: 950px;
+            max-width: 1100px;
+            width: 90%;
             padding: 2rem;
             animation: fadeUp 0.9s ease-out;
         }
@@ -105,7 +105,7 @@
         .hero-sub {
             font-size: 1.1rem;
             color: #e9d5ff;
-            max-width: 650px;
+            max-width: 700px;
             margin: 0 auto 1.8rem auto;
             background: rgba(0,0,0,0.45);
             padding: 0.7rem 1.5rem;
@@ -169,7 +169,7 @@
         }
 
         .container {
-            max-width: 1300px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 3rem 2rem;
         }
@@ -487,3 +487,4 @@
 </div>
 </body>
 </html>
+```

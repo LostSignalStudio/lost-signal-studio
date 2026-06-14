@@ -124,10 +124,11 @@
             color: #d8b4fe;
         }
 
+        /* Статусный блок — УБРАНЫ ВСЕ ЛИШНИЕ ФИГУРЫ (разделители и линии) */
         .project-status {
             display: flex;
             justify-content: center;
-            gap: 2rem;
+            gap: 2.5rem;
             flex-wrap: wrap;
             margin: 1.8rem auto 0.5rem auto;
             padding: 0.8rem 2rem;
@@ -151,16 +152,12 @@
             font-size: 1.5rem;
             filter: drop-shadow(0 0 4px #a855f7);
         }
-        .status-divider {
-            width: 1px;
-            height: 28px;
-            background: linear-gradient(to bottom, transparent, #a855f7, transparent);
-        }
+        /* Убраны все .status-divider и псевдоэлементы */
+
         @media (max-width: 680px) {
-            .project-status { gap: 0.8rem; padding: 0.6rem 1.2rem; }
-            .status-item { font-size: 0.8rem; gap: 0.4rem; }
+            .project-status { gap: 1.2rem; padding: 0.6rem 1.2rem; }
+            .status-item { font-size: 0.85rem; gap: 0.4rem; }
             .status-icon { font-size: 1.2rem; }
-            .status-divider { height: 18px; }
         }
 
         @keyframes fadeUp {
@@ -421,11 +418,10 @@
             <h1 class="hero-title">Сигнал не теряется.<br>Кино начинается</h1>
             <div class="hero-sub">Независимая киностудия в Minecraft. Полноценные фильмы и сериалы с сюжетом, анимацией и монтажом.</div>
             <div class="hero-quote">▸ Прометей: Восстание кода — психологический хоррор. 1 сезон, 6 серий — Лето 2026. 2 сезон — дата и количество серий будут объявлены позднее.</div>
+            <!-- Статусный блок: ТОЛЬКО ИКОНКИ + ТЕКСТ, БЕЗ ЛЮБЫХ ЛИНИЙ/ФИГУР ПОД НАДПИСЯМИ -->
             <div class="project-status">
                 <div class="status-item"><span class="status-icon">📜✨</span><span>Сценарий написан</span></div>
-                <div class="status-divider"></div>
                 <div class="status-item"><span class="status-icon">🏗️🎨</span><span>Локации строятся</span></div>
-                <div class="status-divider"></div>
                 <div class="status-item"><span class="status-icon">⚡🖥️</span><span>Сборки готовы</span></div>
             </div>
         </div>

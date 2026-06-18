@@ -494,6 +494,17 @@
             color: #c084fc;
         }
 
+        /* ===== ДОБАВЛЕННЫЙ МЕЛКИЙ ТЕКСТ ===== */
+        .rules-footer-note {
+            font-size: 0.55rem;
+            color: rgba(160, 140, 200, 0.3);
+            margin-top: 1.5rem;
+            line-height: 1.2;
+            text-align: center;
+            border-top: 1px solid rgba(139, 92, 246, 0.1);
+            padding-top: 1rem;
+        }
+
         .rules-agreement {
             display: flex;
             align-items: center;
@@ -792,6 +803,8 @@
                     <ul class="requirement-list">
                         <li>Опыт работы в студии или IT-команде</li>
                         <li>Ответственность и системность</li>
+                    </ul>
+                    <button onclick="openRulesModal('https://lostsignalstudio.github.io/lost-signal-studio/form.html')" class="btn-rules-open">📝 Откликнуться</button>
                 </div>
 
                 <div class="vacancy-card">
@@ -802,6 +815,8 @@
                     <ul class="requirement-list">
                         <li>Управленческий опыт</li>
                         <li>Видение конечного продукта</li>
+                    </ul>
+                    <button onclick="openRulesModal('https://lostsignalstudio.github.io/lost-signal-studio/form.html')" class="btn-rules-open">📝 Откликнуться</button>
                 </div>
             </div>
         </div>
@@ -835,6 +850,9 @@
         <p><strong>Я ознакомлен и сам несу ответственность,</strong> что я могу давать озвучивание персонажей с использованием нецензурной лексики в необходимости утвердительности сценария. Сценаристы и студия не несут никакой ответственности за приходящие иски о нецензурной брани несовершеннолетних на публичных платформах.</p>
 
         <p><strong>Контракт является открытым.</strong> Вы можете разорвать контракт в любой день, НО вы ОБЯЗАНЫ предупредить продюсера или куратора своего отдела, что вы разорвали контракт. В случае ошибок со сроком разрыва контракта вам может не прийти денежная сумма работы на студию, если вы должны были получить её.</p>
+
+        <!-- ===== МЕЛКИЙ ТЕКСТ (ДОБАВЛЕН) ===== -->
+        <p class="rules-footer-note">В случае при сексуальном домогательстве от Продюсера, студия и его участники не несут ответственности.</p>
 
         <div class="rules-agreement">
             <input type="checkbox" id="rulesAgreement">

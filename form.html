@@ -196,8 +196,11 @@
             <p class="form-subtitle">Данная заявка предназначена для заявления на работу в киностудию Lost Signal Studio</p>
         </div>
 
-        <!-- ФОРМА -->
-        <form id="applicationForm">
+        <!-- ФОРМА — action и method уже настроены -->
+        <form id="applicationForm" action="https://formspree.io/f/mnjykqka" method="POST">
+            <!-- Поле для защиты от спама (Honeypot) — невидимо для пользователей -->
+            <input type="text" name="_gotcha" style="display:none" />
+
             <!-- 1. Имя -->
             <div class="form-group">
                 <label for="name">Ваше имя <span class="required">*</span></label>
@@ -267,8 +270,7 @@
     </div>
 
     <script>
-        // URL из Sheet.best — ЗАМЕНИТЕ НА ВАШ
-        const SHEET_BEST_URL = "https://api.sheetbest.com/sheets/94f31631-8656-4df9-a0b6-0b8301eb6829";
+        // НАСТРОЙКА ОТПРАВКИ ЧЕРЕЗ FORMSPREE (работает без перезагрузки)
         const form = document.getElementById('applicationForm');
         const wrapper = document.getElementById('formWrapper');
         const successMsg = document.getElementById('successMessage');
@@ -276,33 +278,26 @@
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
 
-            // Собираем данные
-            const data = {
-                Время: new Date().toLocaleString('ru-RU'),
-                Имя: document.getElementById('name').value.trim(),
-                Возраст: document.getElementById('age').value.trim(),
-                Роль: document.getElementById('role').value,
-                Discord: document.getElementById('discord').value.trim(),
-                Опыт: document.getElementById('experience').value.trim(),
-                "Согласие с правилами": document.getElementById('rules').checked ? 'Да' : 'Нет',
-                Ответственность: document.getElementById('responsibility').checked ? 'Да' : 'Нет'
-            };
+            const formData = new FormData(form);
 
             try {
-                const response = await fetch(SHEET_BEST_URL, {
-                    method: 'POST',
+                const response = await fetch(form.action, {
+                    method: form.method,
+                    body: formData,
                     headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(data)
+                        'Accept': 'application/json'
+                    }
                 });
 
                 if (response.ok) {
-                    // Показываем сообщение об успехе
+                    // Скрываем форму и показываем сообщение об успехе
                     form.style.display = 'none';
                     successMsg.style.display = 'block';
+                    // Прокручиваем к началу формы
+                    wrapper.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 } else {
-                    alert('Произошла ошибка при отправке. Пожалуйста, попробуйте ещё раз или свяжитесь с нами в Discord.');
+                    const errorData = await response.json();
+                    alert(`Ошибка: ${errorData.error || 'Пожалуйста, попробуйте ещё раз.'}`);
                 }
             } catch (error) {
                 alert('Ошибка соединения. Проверьте интернет и попробуйте снова.');

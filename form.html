@@ -145,7 +145,7 @@
             <p class="form-subtitle">Данная заявка предназначена для заявления на работу в киностудию Lost Signal Studio</p>
         </div>
 
-        <form id="applicationForm" action="https://formspree.io/f/mojoaqee" method="POST">
+        <form id="applicationForm">
             <input type="text" name="_gotcha" style="display:none" />
 
             <div class="form-group">
@@ -213,7 +213,8 @@
         const successMsg = document.getElementById('successMessage');
 
         // === ВАШИ ДАННЫЕ ===
-        const WEBHOOK_URL = 'https://discord.com/api/webhooks/1517962629002301612/4X4QoaCN84kacOXgkew8suY9BCwbpKkDEIXJHh7O7z-lgkn45eNjhq2F14atjsbcSeYm';
+        const BOT_TOKEN = 'MTUxNzk1OTkzMzgxMzk4MTMzNQ.GElgrW.bppKE2Dxf4wcqbLZh2fnEvZUYNLyGln5ZE9Op0';  // Токен из Discord Developer Portal
+        const CHANNEL_ID = '1517947350226702378';  // ID канала, куда отправлять
         const FORMSPREE_URL = 'https://formspree.io/f/mojoaqee';
 
         // === ID РОЛЕЙ ===
@@ -255,7 +256,6 @@
                 footer: { text: 'Lost Signal Studio' }
             };
 
-            // === ОТПРАВКА В DISCORD С УПОМИНАНИЯМИ РОЛЕЙ ===
             const discordPayload = {
                 content: `🔔 <@&${PRODUCER_ROLE_ID}> <@&${CURATOR_ROLE_ID}> Поступила новая заявка!`,
                 embeds: [discordEmbed],
@@ -270,17 +270,21 @@
                 ]
             };
 
-            // === ОТПРАВКА В FORMSPREE ===
             const formspreeData = new FormData(form);
             formspreeData.append('application_id', applicationData.id);
 
             try {
-                const discordResponse = await fetch(WEBHOOK_URL, {
+                // === 1. ОТПРАВКА В DISCORD ЧЕРЕЗ БОТА ===
+                const discordResponse = await fetch(`https://discord.com/api/v10/channels/${CHANNEL_ID}/messages`, {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
+                    headers: {
+                        'Authorization': `Bot ${BOT_TOKEN}`,
+                        'Content-Type': 'application/json'
+                    },
                     body: JSON.stringify(discordPayload)
                 });
 
+                // === 2. ОТПРАВКА В FORMSPREE ===
                 const formspreeResponse = await fetch(FORMSPREE_URL, {
                     method: 'POST',
                     body: formspreeData,

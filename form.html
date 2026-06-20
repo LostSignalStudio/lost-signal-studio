@@ -209,12 +209,16 @@
     </div>
 
     <script>
-        // === ВЕСЬ JAVASCRIPT-КОД ВНУТРИ ТЕГА <script> ===
         const form = document.getElementById('applicationForm');
         const successMsg = document.getElementById('successMessage');
 
+        // === ВАШИ ДАННЫЕ ===
         const WEBHOOK_URL = 'https://discord.com/api/webhooks/1517962629002301612/4X4QoaCN84kacOXgkew8suY9BCwbpKkDEIXJHh7O7z-lgkn45eNjhq2F14atjsbcSeYm';
         const FORMSPREE_URL = 'https://formspree.io/f/mojoaqee';
+
+        // === ID РОЛЕЙ ===
+        const PRODUCER_ROLE_ID = '1501975159253504050';  // Продюсер
+        const CURATOR_ROLE_ID = '1515266808553279580';   // Куратор
 
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
@@ -251,7 +255,9 @@
                 footer: { text: 'Lost Signal Studio' }
             };
 
+            // === ОТПРАВКА В DISCORD С УПОМИНАНИЯМИ РОЛЕЙ ===
             const discordPayload = {
+                content: `🔔 <@&${PRODUCER_ROLE_ID}> <@&${CURATOR_ROLE_ID}> Поступила новая заявка!`,
                 embeds: [discordEmbed],
                 components: [
                     {
@@ -264,6 +270,7 @@
                 ]
             };
 
+            // === ОТПРАВКА В FORMSPREE ===
             const formspreeData = new FormData(form);
             formspreeData.append('application_id', applicationData.id);
 
